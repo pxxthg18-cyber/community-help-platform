@@ -1,0 +1,15 @@
+services:
+  community-help:
+    build: .
+    container_name: community_help_platform
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_PATH: /data/community_help.db
+      SECRET_KEY: change-this-for-any-real-deployment
+    volumes:
+      - community_help_data:/data
+    restart: unless-stopped
+
+volumes:
+  community_help_data:

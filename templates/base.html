@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Community Connect{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="{{ url_for('index') }}">Community<span>Connect</span></a>
+<nav aria-label="Main navigation"><a href="{{ url_for('index') }}">Dashboard</a><a href="{{ url_for('list_requests') }}">Find Help</a><a class="nav-cta" href="{{ url_for('request_help') }}">Request Help</a></nav>
+</header>
+<main class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<section class="flash-list" aria-live="polite">{% for category, message in messages %}<p class="flash {{ category }}">{{ message }}</p>{% endfor %}</section>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer><p>Community Connect · A student learning prototype</p><p class="safety">Not an emergency service. Do not post sensitive personal information.</p></footer>
+</body></html>

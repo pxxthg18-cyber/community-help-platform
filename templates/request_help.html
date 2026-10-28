@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Request Help | Community Connect{% endblock %}
+{% block content %}
+<section class="page-intro"><p class="eyebrow">ASK YOUR COMMUNITY</p><h1>Request a helping hand</h1><p>Share only the information needed for someone to understand your request.</p></section>
+<form class="form-card" method="post">
+<label for="title">Request title</label><input id="title" name="title" maxlength="100" required value="{{ form.get('title', '') }}" placeholder="e.g. Maths tutoring for a student">
+<label for="description">What help do you need?</label><textarea id="description" name="description" rows="5" maxlength="1000" required placeholder="Describe the task and any useful details.">{{ form.get('description', '') }}</textarea>
+<div class="form-row"><div><label for="category">Category</label><select id="category" name="category" required><option value="">Choose a category</option>{% for category in categories %}<option value="{{ category }}" {% if form.get('category') == category %}selected{% endif %}>{{ category }}</option>{% endfor %}</select></div><div><label for="location">General location</label><input id="location" name="location" maxlength="120" required value="{{ form.get('location', '') }}" placeholder="e.g. Central neighbourhood"></div></div>
+<label for="requester">Display name</label><input id="requester" name="requester" maxlength="80" required value="{{ form.get('requester', '') }}" placeholder="Name to display on the request">
+<p class="form-hint">Do not include phone numbers, home addresses, medical records, or other sensitive information.</p><button class="button primary" type="submit">Post request</button>
+</form>
+{% endblock %}
